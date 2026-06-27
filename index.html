@@ -6,7 +6,7 @@
     <title>Premium Studio — Главная</title>
     <link rel="stylesheet" href="css/style.css" />
     <style>
-        /* ДОПОЛНИТЕЛЬНЫЙ СТИЛЬ ДЛЯ КНОПОК (НА ВСЯКИЙ СЛУЧАЙ) */
+        /* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ РАБОТЫ ВСЕХ БЛОКОВ */
         .services-grid a.service-card {
             display: block;
             text-decoration: none;
@@ -18,27 +18,81 @@
             border-color: #6C63FF;
             box-shadow: 0 12px 40px rgba(108, 99, 255, 0.15);
         }
-        /* ФИКС ДЛЯ КНОПОК В ШАПКЕ */
-        .nav-link, .btn-contact {
-            cursor: pointer;
-        }
-        .btn, .btn-primary, .btn-outline, .btn-contact {
-            cursor: pointer;
+        .pricing-card .btn {
             display: inline-block;
+            margin-top: 10px;
         }
-        /* АНИМАЦИЯ ПРИ НАВЕДЕНИИ */
-        .service-card {
-            background: #14142b;
-            padding: 30px 20px;
+        .portfolio-item {
+            cursor: pointer;
+            position: relative;
             border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: #14142b;
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: #fff;
+            pointer-events: none;
+        }
+        /* СТИЛИ ДЛЯ МОДАЛКИ (ПОРТФОЛИО) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: #1a1a35;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
             text-align: center;
-            border: 1px solid #2a2a4a;
-            transition: all 0.3s ease;
+            border: 1px solid #6C63FF;
+        }
+        .modal-content .close {
+            float: right;
+            font-size: 28px;
+            cursor: pointer;
+            color: #fff;
+        }
+        .modal-content h3 {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .modal-content p {
+            color: #a0a0b8;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
 
+    <!-- ===== ШАПКА ===== -->
     <header class="header" id="header">
         <div class="container header-container">
             <a href="index.html" class="logo">Premium<span>Studio</span></a>
@@ -65,7 +119,7 @@
     </header>
 
     <main>
-        <!-- HERO -->
+        <!-- ===== HERO (Первый экран) ===== -->
         <section class="hero" id="hero">
             <div class="container">
                 <h1 class="hero-title">Premium Web Design &amp; SEO Development</h1>
@@ -83,7 +137,7 @@
             </div>
         </section>
 
-        <!-- SERVICES (ВСЕ КНОПКИ РАБОТАЮТ) -->
+        <!-- ===== SERVICES (Услуги) ===== -->
         <section class="services" id="services">
             <div class="container">
                 <h2 class="section-title">Our Services</h2>
@@ -116,14 +170,187 @@
                 </div>
             </div>
         </section>
+
+        <!-- ===== WHY US (Почему мы) ===== -->
+        <section class="why-us" id="why-us">
+            <div class="container">
+                <h2 class="section-title">Why Choose Us</h2>
+                <div class="features-grid">
+                    <div class="feature-item">✓ Premium Design</div>
+                    <div class="feature-item">✓ Responsive Layout</div>
+                    <div class="feature-item">✓ SEO Friendly</div>
+                    <div class="feature-item">✓ Fast Loading</div>
+                    <div class="feature-item">✓ Google Optimized</div>
+                    <div class="feature-item">✓ Mobile First</div>
+                    <div class="feature-item">✓ Secure Architecture</div>
+                    <div class="feature-item">✓ Clean Code</div>
+                    <div class="feature-item">✓ Modern Technologies</div>
+                    <div class="feature-item">✓ Lifetime Support</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PORTFOLIO (Портфолио) ===== -->
+        <section class="portfolio" id="portfolio">
+            <div class="container">
+                <h2 class="section-title">Portfolio</h2>
+                <div class="portfolio-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="landing">Landing</button>
+                    <button class="filter-btn" data-filter="business">Business</button>
+                    <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="landing" onclick="openModal('Project 1', 'Landing Page')">
+                        <img src="assets/images/portfolio-1.webp" alt="Project 1" />
+                        <div class="portfolio-overlay">
+                            <h4>Project Name</h4>
+                            <p>Landing Page</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="business" onclick="openModal('Project 2', 'Business Website')">
+                        <img src="assets/images/portfolio-2.webp" alt="Project 2" />
+                        <div class="portfolio-overlay">
+                            <h4>Project Name</h4>
+                            <p>Business Website</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="ecommerce" onclick="openModal('Project 3', 'E-commerce')">
+                        <img src="assets/images/portfolio-3.webp" alt="Project 3" />
+                        <div class="portfolio-overlay">
+                            <h4>Project Name</h4>
+                            <p>E-commerce</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PRICING (Тарифы) ===== -->
+        <section class="pricing" id="pricing">
+            <div class="container">
+                <h2 class="section-title">Pricing</h2>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h3>Starter</h3>
+                        <div class="price">$99</div>
+                        <ul>
+                            <li>✓ Landing Page</li>
+                            <li>✓ Responsive</li>
+                            <li>✓ Basic SEO</li>
+                            <li>✓ Support</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-outline">Select</a>
+                    </div>
+                    <div class="pricing-card popular">
+                        <span class="badge">Popular</span>
+                        <h3>Business</h3>
+                        <div class="price">$299</div>
+                        <ul>
+                            <li>✓ Business Website</li>
+                            <li>✓ Advanced SEO</li>
+                            <li>✓ Blog</li>
+                            <li>✓ Analytics</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-primary">Select</a>
+                    </div>
+                    <div class="pricing-card">
+                        <h3>Premium</h3>
+                        <div class="price">$599</div>
+                        <ul>
+                            <li>✓ Unlimited Pages</li>
+                            <li>✓ Custom Design</li>
+                            <li>✓ Technical SEO</li>
+                            <li>✓ Priority Support</li>
+                        </ul>
+                        <a href="contact.html" class="btn btn-outline">Select</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA (Призыв к действию) ===== -->
+        <section class="cta" id="contact">
+            <div class="container">
+                <h2>Ready to build your next project?</h2>
+                <p>Let's create a premium website that grows your business.</p>
+                <a href="contact.html" class="btn btn-primary btn-large">Start Your Project</a>
+            </div>
+        </section>
     </main>
 
+    <!-- ===== ПОДВАЛ ===== -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Premium Studio. All rights reserved.</p>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services/web-development.html">Web Development</a></li>
+                        <li><a href="services/landing-page.html">Landing Pages</a></li>
+                        <li><a href="services/e-commerce.html">E-commerce</a></li>
+                        <li><a href="services/seo.html">SEO</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Premium Studio. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
+    <!-- ===== МОДАЛКА ДЛЯ ПОРТФОЛИО ===== -->
+    <div id="portfolioModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="modalTitle">Project Name</h3>
+            <p id="modalDesc">Description</p>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
+    <script>
+        // Функции для модалки портфолио
+        function openModal(name, desc) {
+            document.getElementById('modalTitle').textContent = name;
+            document.getElementById('modalDesc').textContent = desc;
+            document.getElementById('portfolioModal').classList.add('active');
+        }
+        function closeModal() {
+            document.getElementById('portfolioModal').classList.remove('active');
+        }
+        // Закрытие модалки по клику вне окна
+        window.onclick = function(event) {
+            const modal = document.getElementById('portfolioModal');
+            if (event.target === modal) {
+                modal.classList.remove('active');
+            }
+        }
+    </script>
 </body>
 </html>
