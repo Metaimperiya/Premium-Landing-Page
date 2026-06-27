@@ -6,7 +6,6 @@
     <title>Premium Studio — Главная</title>
     <link rel="stylesheet" href="css/style.css" />
     <style>
-        /* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ РАБОТЫ ВСЕХ БЛОКОВ */
         .services-grid a.service-card {
             display: block;
             text-decoration: none;
@@ -17,6 +16,7 @@
             border-radius: 16px;
             text-align: center;
             border: 1px solid #2a2a4a;
+            cursor: pointer;
         }
         .services-grid a.service-card:hover {
             transform: translateY(-8px);
@@ -26,6 +26,10 @@
         .pricing-card .btn {
             display: inline-block;
             margin-top: 10px;
+            cursor: pointer;
+        }
+        .nav-link, .btn-contact, .btn, .btn-primary, .btn-outline {
+            cursor: pointer;
         }
         .portfolio-item {
             cursor: pointer;
@@ -84,28 +88,32 @@
             cursor: pointer;
             color: #fff;
         }
-        .modal-content h3 {
-            color: #fff;
-            margin-bottom: 10px;
-        }
-        .modal-content p {
-            color: #a0a0b8;
-            margin-bottom: 20px;
-        }
+        .modal-content h3 { color: #fff; margin-bottom: 10px; }
+        .modal-content p { color: #a0a0b8; margin-bottom: 20px; }
         .footer-col .social-link {
             display: inline-block;
             margin-right: 12px;
             color: #a0a0b8;
             transition: color 0.3s;
         }
-        .footer-col .social-link:hover {
-            color: #6C63FF;
+        .footer-col .social-link:hover { color: #6C63FF; }
+        .burger {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 30px;
+            color: #fff;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .burger { display: block; }
+            .nav { display: none; }
+            .nav.active { display: block; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== ШАПКА ===== -->
     <header class="header" id="header">
         <div class="container header-container">
             <a href="index.html" class="logo">Premium<span>Studio</span></a>
@@ -116,8 +124,14 @@
                         <ul class="dropdown">
                             <li><a href="services/web-development.html">Web Development</a></li>
                             <li><a href="services/landing-page.html">Landing Page Design</a></li>
-                            <li><a href="services/e-commerce.html">E-commerce</a></li>
+                            <li><a href="services/business-websites.html">Business Websites</a></li>
+                            <li><a href="services/e-commerce.html">E-commerce Development</a></li>
+                            <li><a href="services/portfolio-websites.html">Portfolio Websites</a></li>
+                            <li><a href="services/dashboard-development.html">Dashboard Development</a></li>
+                            <li><a href="services/social-platform.html">Social Platform Development</a></li>
+                            <li><a href="services/ui-ux-design.html">UI/UX Design</a></li>
                             <li><a href="services/seo.html">SEO Optimization</a></li>
+                            <li><a href="services/speed-optimization.html">Website Speed Optimization</a></li>
                             <li><a href="services/support.html">Support</a></li>
                         </ul>
                     </li>
@@ -132,7 +146,7 @@
     </header>
 
     <main>
-        <!-- ===== HERO ===== -->
+        <!-- HERO -->
         <section class="hero" id="hero">
             <div class="container">
                 <h1 class="hero-title">Premium Web Design &amp; SEO Development</h1>
@@ -150,7 +164,7 @@
             </div>
         </section>
 
-        <!-- ===== SERVICES ===== -->
+        <!-- SERVICES (ВСЕ 11 КНОПОК-КАРТОЧЕК) -->
         <section class="services" id="services">
             <div class="container">
                 <h2 class="section-title">Our Services</h2>
@@ -165,15 +179,45 @@
                         <h3>Landing Page Design</h3>
                         <p>Высококонверсионные лендинги.</p>
                     </a>
+                    <a href="services/business-websites.html" class="service-card">
+                        <div class="service-icon">🏢</div>
+                        <h3>Business Websites</h3>
+                        <p>Корпоративные сайты.</p>
+                    </a>
                     <a href="services/e-commerce.html" class="service-card">
                         <div class="service-icon">🛒</div>
                         <h3>E-commerce Development</h3>
                         <p>Интернет-магазины.</p>
                     </a>
+                    <a href="services/portfolio-websites.html" class="service-card">
+                        <div class="service-icon">🎨</div>
+                        <h3>Portfolio Websites</h3>
+                        <p>Персональные сайты.</p>
+                    </a>
+                    <a href="services/dashboard-development.html" class="service-card">
+                        <div class="service-icon">📊</div>
+                        <h3>Dashboard Development</h3>
+                        <p>CRM, панели управления.</p>
+                    </a>
+                    <a href="services/social-platform.html" class="service-card">
+                        <div class="service-icon">🌐</div>
+                        <h3>Social Platform Development</h3>
+                        <p>Социальные сети, сообщества и чаты.</p>
+                    </a>
+                    <a href="services/ui-ux-design.html" class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h3>UI/UX Design</h3>
+                        <p>Современные интерфейсы.</p>
+                    </a>
                     <a href="services/seo.html" class="service-card">
                         <div class="service-icon">🔍</div>
                         <h3>SEO Optimization</h3>
                         <p>Комплексная поисковая оптимизация.</p>
+                    </a>
+                    <a href="services/speed-optimization.html" class="service-card">
+                        <div class="service-icon">🚀</div>
+                        <h3>Website Speed Optimization</h3>
+                        <p>Ускорение загрузки сайта.</p>
                     </a>
                     <a href="services/support.html" class="service-card">
                         <div class="service-icon">💬</div>
@@ -184,7 +228,7 @@
             </div>
         </section>
 
-        <!-- ===== WHY US ===== -->
+        <!-- WHY US -->
         <section class="why-us" id="why-us">
             <div class="container">
                 <h2 class="section-title">Why Choose Us</h2>
@@ -203,7 +247,7 @@
             </div>
         </section>
 
-        <!-- ===== PORTFOLIO ===== -->
+        <!-- PORTFOLIO -->
         <section class="portfolio" id="portfolio">
             <div class="container">
                 <h2 class="section-title">Portfolio</h2>
@@ -239,7 +283,7 @@
             </div>
         </section>
 
-        <!-- ===== PRICING ===== -->
+        <!-- PRICING -->
         <section class="pricing" id="pricing">
             <div class="container">
                 <h2 class="section-title">Pricing</h2>
@@ -282,7 +326,7 @@
             </div>
         </section>
 
-        <!-- ===== CTA ===== -->
+        <!-- CTA -->
         <section class="cta" id="contact">
             <div class="container">
                 <h2>Ready to build your next project?</h2>
@@ -292,7 +336,7 @@
         </section>
     </main>
 
-    <!-- ===== ПОДВАЛ ===== -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -325,10 +369,10 @@
                 <div class="footer-col">
                     <h4>Follow Us</h4>
                     <ul>
-                        <li><a href="#" class="social-link">GitHub</a></li>
-                        <li><a href="#" class="social-link">Twitter</a></li>
-                        <li><a href="#" class="social-link">LinkedIn</a></li>
-                        <li><a href="https://t.me/METAIMPERIYA" class="social-link" target="_blank">Telegram</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="https://t.me/METAIMPERIYA" target="_blank">Telegram</a></li>
                     </ul>
                 </div>
             </div>
@@ -338,7 +382,7 @@
         </div>
     </footer>
 
-    <!-- ===== МОДАЛКА ===== -->
+    <!-- MODAL -->
     <div id="portfolioModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -349,6 +393,9 @@
 
     <script src="js/main.js"></script>
     <script>
+        document.getElementById('burger').addEventListener('click', function() {
+            document.getElementById('nav').classList.toggle('active');
+        });
         function openModal(name, desc) {
             document.getElementById('modalTitle').textContent = name;
             document.getElementById('modalDesc').textContent = desc;
