@@ -3,35 +3,354 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Premium Web Studio — Главная</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Premium Landing Page — SEO Web Studio</title>
+    <meta name="description" content="Professional web design, landing page development, responsive websites, SEO optimization, UI/UX design, business websites, web applications, fast loading pages, technical SEO and modern web development solutions." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #05050f;
+            color: #e8e8f0;
+            overflow-x: hidden;
+        }
+        html { scroll-behavior: smooth; }
+        a { text-decoration: none; color: inherit; }
+        
+        /* ===== НЕОНОВЫЕ АКЦЕНТЫ ===== */
+        .neon-text {
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: neonPulse 4s ease-in-out infinite;
+        }
+        @keyframes neonPulse {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .glow-border {
+            border: 1px solid rgba(124, 58, 237, 0.15);
+            transition: all 0.4s ease;
+        }
+        .glow-border:hover {
+            border-color: rgba(124, 58, 237, 0.4);
+            box-shadow: 0 0 40px rgba(124, 58, 237, 0.08);
+        }
+        .glass {
+            background: rgba(255,255,255,0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+
+        /* ===== ШАПКА ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 40px;
+            background: rgba(5, 5, 15, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.5);
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: #a78bfa; }
+        .nav-btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 13px;
+            color: #fff;
+            background: linear-gradient(135deg, #7c3aed, #a78bfa);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .nav-btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(124, 58, 237, 0.25); }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 140px 40px 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at 30% 20%, rgba(124, 58, 237, 0.06), transparent 60%);
+        }
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+        .hero-text p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.5);
+            margin: 20px 0 32px;
+            line-height: 1.7;
+            max-width: 500px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .hero-stats .stat h3 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #fff;
+        }
+        .hero-stats .stat p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.3);
+            margin: 0;
+        }
+        .hero-mockup {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .mockup-box {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 16/10;
+            background: rgba(255,255,255,0.02);
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        .mockup-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), transparent);
+        }
+        .mockup-box .screen {
+            z-index: 1;
+            text-align: center;
+        }
+        .mockup-box .screen .icon { font-size: 80px; display: block; }
+        .mockup-box .screen span { font-size: 14px; color: rgba(255,255,255,0.2); }
+
+        /* ===== BUTTONS ===== */
+        .btn-primary {
+            display: inline-block;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 16px;
+            color: #fff;
+            background: linear-gradient(135deg, #7c3aed, #a78bfa);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(124, 58, 237, 0.25);
+        }
+        .btn-outline {
+            display: inline-block;
+            padding: 16px 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            color: #fff;
+            background: transparent;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-left: 12px;
+        }
+        .btn-outline:hover {
+            border-color: #7c3aed;
+            background: rgba(124, 58, 237, 0.05);
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .section-header h2 {
+            font-size: 40px;
+            font-weight: 800;
+        }
+        .section-header p {
+            color: rgba(255,255,255,0.4);
+            font-size: 18px;
+            margin-top: 8px;
+        }
+
+        /* ===== GRID ===== */
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+
+        .card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 20px;
+            padding: 28px 24px;
+            transition: 0.4s;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(124, 58, 237, 0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .card .icon { font-size: 32px; display: block; margin-bottom: 12px; }
+        .card h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+        .card p { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; }
+
+        .service-card {
+            text-align: center;
+            padding: 24px 16px;
+        }
+        .service-card .icon { font-size: 28px; }
+        .service-card h4 { font-size: 14px; }
+
+        .process-step {
+            text-align: center;
+            padding: 24px;
+        }
+        .process-step .number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(167, 139, 250, 0.05));
+            border: 1px solid rgba(124, 58, 237, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 800;
+            color: #a78bfa;
+            margin: 0 auto 12px;
+        }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            padding: 80px 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            background: radial-gradient(ellipse at center, rgba(124, 58, 237, 0.04), transparent);
+        }
+        .cta-section h2 { font-size: 44px; font-weight: 800; }
+        .cta-section p { color: rgba(255,255,255,0.4); font-size: 18px; margin: 16px 0 32px; }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            color: rgba(255,255,255,0.1);
+            font-size: 13px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .grid-4 { grid-template-columns: 1fr 1fr; }
+            .grid-5 { grid-template-columns: 1fr 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .navbar { padding: 12px 20px; flex-wrap: wrap; gap: 12px; }
+            .nav-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-text p { margin: 20px auto; }
+            .hero-stats { justify-content: center; flex-wrap: wrap; }
+            .hero-text h1 { font-size: 36px; }
+            .section { padding: 40px 20px; }
+            .section-header h2 { font-size: 28px; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .grid-4 { grid-template-columns: 1fr; }
+            .grid-5 { grid-template-columns: 1fr 1fr; }
+            .cta-section h2 { font-size: 28px; }
+            .mockup-box { max-width: 100%; }
+            .btn-outline { margin-left: 0; margin-top: 12px; }
+        }
+        @media (max-width: 480px) {
+            .grid-5 { grid-template-columns: 1fr; }
+            .hero-stats { gap: 20px; flex-wrap: wrap; }
+            .hero-stats .stat h3 { font-size: 24px; }
+        }
+    </style>
 </head>
 <body>
 
+<!-- ===== НАВИГАЦИЯ ===== -->
 <nav class="navbar">
-    <div class="logo"><span class="neon">✦</span> WEB<span class="neon">STUDIO</span></div>
+    <div class="logo"><span class="neon-text">✦</span> WEB<span class="neon-text">STUDIO</span></div>
     <ul class="nav-links">
-        <a href="index.html">Главная</a>
-        <a href="pages/services/landing-page.html">Услуги</a>
-        <a href="pages/why.html">Почему мы</a>
-        <a href="pages/process.html">Процесс</a>
-        <a href="pages/portfolio.html">Портфолио</a>
-        <a href="pages/pricing.html">Цены</a>
-        <a href="pages/faq.html">FAQ</a>
-        <a href="pages/blog.html">Блог</a>
+        <a href="#services">Услуги</a>
+        <a href="#why">Почему мы</a>
+        <a href="#process">Процесс</a>
+        <a href="#portfolio">Портфолио</a>
+        <a href="#pricing">Цены</a>
+        <a href="#faq">FAQ</a>
+        <a href="#blog">Блог</a>
         <button class="nav-btn" onclick="window.location.href='https://t.me/Google_Maps_SEO'">Связаться</button>
     </ul>
 </nav>
 
+<!-- ===== HERO ===== -->
 <section class="hero">
     <div class="hero-content">
         <div class="hero-text">
-            <div class="badge">⚡ PREMIUM WEB STUDIO</div>
-            <h1>Создаём <span class="neon">премиальные</span> сайты, которые продают</h1>
+            <div style="display:inline-block;padding:6px 18px;border-radius:30px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.1);font-size:12px;color:#a78bfa;margin-bottom:16px;">⚡ PREMIUM WEB STUDIO</div>
+            <h1>Создаём <span class="neon-text">премиальные</span> сайты, которые продают</h1>
             <p>Разработка лендингов, корпоративных сайтов, интернет-магазинов и веб-приложений с полным SEO-сопровождением.</p>
             <div>
-                <a href="https://t.me/Google_Maps_SEO" target="_blank" class="btn-primary">🚀 Заказать проект</a>
-                <a href="pages/services/landing-page.html" class="btn-outline">Узнать больше</a>
+                <a href="#contact" class="btn-primary">🚀 Заказать проект</a>
+                <a href="#services" class="btn-outline">Узнать больше</a>
             </div>
             <div class="hero-stats">
                 <div class="stat"><h3>120+</h3><p>Выполненных проектов</p></div>
@@ -41,38 +360,166 @@
         </div>
         <div class="hero-mockup">
             <div class="mockup-box glass glow-border">
-                <div class="screen"><span class="icon">💻</span><span>Premium Web Studio</span></div>
+                <div class="screen">
+                    <span class="icon">💻</span>
+                    <span>Premium Web Studio</span>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- ===== УСЛУГИ ===== -->
 <section class="section" id="services">
     <div class="section-header">
-        <h2>Наши <span class="neon">услуги</span></h2>
+        <h2>Наши <span class="neon-text">услуги</span></h2>
         <p>Полный спектр решений для вашего бизнеса</p>
     </div>
     <div class="grid-4">
-        <a href="pages/services/landing-page.html" class="card service-card glow-border"><span class="icon">📄</span><h4>Landing Page</h4></a>
-        <a href="pages/services/business-website.html" class="card service-card glow-border"><span class="icon">🏢</span><h4>Business Website</h4></a>
-        <a href="pages/services/corporate-website.html" class="card service-card glow-border"><span class="icon">🏛️</span><h4>Corporate Website</h4></a>
-        <a href="pages/services/ecommerce-store.html" class="card service-card glow-border"><span class="icon">🛒</span><h4>E-commerce Store</h4></a>
-        <a href="pages/services/portfolio-website.html" class="card service-card glow-border"><span class="icon">🎨</span><h4>Portfolio Website</h4></a>
-        <a href="pages/services/blog-development.html" class="card service-card glow-border"><span class="icon">📝</span><h4>Blog Development</h4></a>
-        <a href="pages/services/ui-ux-design.html" class="card service-card glow-border"><span class="icon">🎯</span><h4>UI/UX Design</h4></a>
-        <a href="pages/services/website-redesign.html" class="card service-card glow-border"><span class="icon">🔄</span><h4>Website Redesign</h4></a>
-        <a href="pages/services/performance-optimization.html" class="card service-card glow-border"><span class="icon">⚡</span><h4>Performance Optimization</h4></a>
-        <a href="pages/services/seo-optimization.html" class="card service-card glow-border"><span class="icon">🔍</span><h4>SEO Optimization</h4></a>
-        <a href="pages/services/technical-seo.html" class="card service-card glow-border"><span class="icon">🛠️</span><h4>Technical SEO</h4></a>
-        <a href="pages/services/on-page-seo.html" class="card service-card glow-border"><span class="icon">📈</span><h4>On-Page SEO</h4></a>
-        <a href="pages/services/local-seo.html" class="card service-card glow-border"><span class="icon">📍</span><h4>Local SEO</h4></a>
-        <a href="pages/services/website-maintenance.html" class="card service-card glow-border"><span class="icon">🛡️</span><h4>Website Maintenance</h4></a>
+        <div class="card service-card glow-border"><span class="icon">📄</span><h4>Landing Page</h4></div>
+        <div class="card service-card glow-border"><span class="icon">🏢</span><h4>Business Website</h4></div>
+        <div class="card service-card glow-border"><span class="icon">🏛️</span><h4>Corporate Website</h4></div>
+        <div class="card service-card glow-border"><span class="icon">🛒</span><h4>E-commerce Store</h4></div>
+        <div class="card service-card glow-border"><span class="icon">🎨</span><h4>Portfolio Website</h4></div>
+        <div class="card service-card glow-border"><span class="icon">📝</span><h4>Blog Development</h4></div>
+        <div class="card service-card glow-border"><span class="icon">🎯</span><h4>UI/UX Design</h4></div>
+        <div class="card service-card glow-border"><span class="icon">🔄</span><h4>Website Redesign</h4></div>
+        <div class="card service-card glow-border"><span class="icon">⚡</span><h4>Performance Optimization</h4></div>
+        <div class="card service-card glow-border"><span class="icon">🔍</span><h4>SEO Optimization</h4></div>
+        <div class="card service-card glow-border"><span class="icon">🛠️</span><h4>Technical SEO</h4></div>
+        <div class="card service-card glow-border"><span class="icon">📈</span><h4>On-Page SEO</h4></div>
+        <div class="card service-card glow-border"><span class="icon">📍</span><h4>Local SEO</h4></div>
+        <div class="card service-card glow-border"><span class="icon">📊</span><h4>Website Optimization</h4></div>
+        <div class="card service-card glow-border"><span class="icon">🛡️</span><h4>Website Maintenance</h4></div>
     </div>
 </section>
 
+<!-- ===== ПОЧЕМУ МЫ ===== -->
+<section class="section" id="why">
+    <div class="section-header">
+        <h2>Почему <span class="neon-text">выбирают нас</span></h2>
+        <p>10 причин работать с нами</p>
+    </div>
+    <div class="grid-4">
+        <div class="card glow-border"><span class="icon">🎨</span><h4>Индивидуальный дизайн</h4><p>Уникальный стиль под ваш бренд</p></div>
+        <div class="card glow-border"><span class="icon">🔍</span><h4>SEO Friendly</h4><p>Сайты, которые любят поисковики</p></div>
+        <div class="card glow-border"><span class="icon">📱</span><h4>Responsive Design</h4><p>Идеально на любых устройствах</p></div>
+        <div class="card glow-border"><span class="icon">⚡</span><h4>Fast Loading</h4><p>Скорость загрузки — наш приоритет</p></div>
+        <div class="card glow-border"><span class="icon">✨</span><h4>Modern UI/UX</h4><p>Современные интерфейсы</p></div>
+        <div class="card glow-border"><span class="icon">📊</span><h4>Core Web Vitals</h4><p>Google-оптимизация</p></div>
+        <div class="card glow-border"><span class="icon">🛡️</span><h4>Security</h4><p>Защита и безопасность</p></div>
+        <div class="card glow-border"><span class="icon">💬</span><h4>Technical Support</h4><p>Поддержка 24/7</p></div>
+        <div class="card glow-border"><span class="icon">🏗️</span><h4>Scalable Architecture</h4><p>Готовность к росту</p></div>
+        <div class="card glow-border"><span class="icon">🧹</span><h4>Clean Code</h4><p>Чистый и понятный код</p></div>
+    </div>
+</section>
+
+<!-- ===== ПРОЦЕСС ===== -->
+<section class="section" id="process">
+    <div class="section-header">
+        <h2>Процесс <span class="neon-text">работы</span></h2>
+        <p>От идеи до запуска</p>
+    </div>
+    <div class="grid-4">
+        <div class="card process-step glow-border"><div class="number">1</div><h4>Анализ проекта</h4><p>Изучаем цели и задачи</p></div>
+        <div class="card process-step glow-border"><div class="number">2</div><h4>Проектирование</h4><p>Структура и архитектура</p></div>
+        <div class="card process-step glow-border"><div class="number">3</div><h4>Дизайн</h4><p>Визуальная концепция</p></div>
+        <div class="card process-step glow-border"><div class="number">4</div><h4>Разработка</h4><p>Frontend + Backend</p></div>
+        <div class="card process-step glow-border"><div class="number">5</div><h4>SEO-оптимизация</h4><p>Настройка под поиск</p></div>
+        <div class="card process-step glow-border"><div class="number">6</div><h4>Тестирование</h4><p>Проверка и отладка</p></div>
+        <div class="card process-step glow-border"><div class="number">7</div><h4>Запуск сайта</h4><p>Релиз и поддержка</p></div>
+    </div>
+</section>
+
+<!-- ===== ПОРТФОЛИО ===== -->
+<section class="section" id="portfolio">
+    <div class="section-header">
+        <h2>Наше <span class="neon-text">портфолио</span></h2>
+        <p>Реальные проекты, которые мы сделали</p>
+    </div>
+    <div class="grid-3">
+        <div class="card glow-border"><span class="icon">📄</span><h4>Landing Pages</h4><p>Продающие лендинги</p></div>
+        <div class="card glow-border"><span class="icon">🏢</span><h4>Business Websites</h4><p>Корпоративные сайты</p></div>
+        <div class="card glow-border"><span class="icon">🛒</span><h4>Online Stores</h4><p>Интернет-магазины</p></div>
+        <div class="card glow-border"><span class="icon">📊</span><h4>Dashboards</h4><p>Админ-панели</p></div>
+        <div class="card glow-border"><span class="icon">🌐</span><h4>Social Platforms</h4><p>Социальные сети</p></div>
+        <div class="card glow-border"><span class="icon">👑</span><h4>Admin Panels</h4><p>Системы управления</p></div>
+    </div>
+</section>
+
+<!-- ===== ЦЕНЫ ===== -->
+<section class="section" id="pricing">
+    <div class="section-header">
+        <h2>Наши <span class="neon-text">цены</span></h2>
+        <p>Выберите подходящий тариф</p>
+    </div>
+    <div class="grid-4">
+        <div class="card glow-border" style="text-align:center;"><h3>Starter</h3><p style="font-size:32px;font-weight:800;margin:12px 0;">$499</p><p>Лендинг или визитка</p></div>
+        <div class="card glow-border" style="text-align:center;border-color:rgba(124,58,237,0.2);"><h3>Business</h3><p style="font-size:32px;font-weight:800;margin:12px 0;">$999</p><p>Корпоративный сайт</p></div>
+        <div class="card glow-border" style="text-align:center;"><h3>Premium</h3><p style="font-size:32px;font-weight:800;margin:12px 0;">$1999</p><p>Интернет-магазин</p></div>
+        <div class="card glow-border" style="text-align:center;"><h3>Enterprise</h3><p style="font-size:32px;font-weight:800;margin:12px 0;">$4999+</p><p>Веб-платформа</p></div>
+    </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section" id="faq">
+    <div class="section-header">
+        <h2>Часто задаваемые <span class="neon-text">вопросы</span></h2>
+    </div>
+    <div class="grid-2">
+        <div class="card glow-border"><h4>💡 Сколько стоит сайт?</h4><p>Цена зависит от сложности: от $499 за лендинг до $4999+ за платформу.</p></div>
+        <div class="card glow-border"><h4>⏱️ Сколько времени занимает разработка?</h4><p>От 5 до 30 дней в зависимости от проекта.</p></div>
+        <div class="card glow-border"><h4>🔍 Делаете ли SEO?</h4><p>Да, мы делаем техническую, внутреннюю и локальную SEO-оптимизацию.</p></div>
+        <div class="card glow-border"><h4>💬 Есть ли поддержка?</h4><p>Да, мы предоставляем поддержку 24/7 для всех клиентов.</p></div>
+        <div class="card glow-border"><h4>🔄 Можно ли заказать редизайн?</h4><p>Да, мы делаем редизайн существующих сайтов.</p></div>
+        <div class="card glow-border"><h4>📱 Будет ли сайт адаптивным?</h4><p>Да, все наши сайты адаптивны под все устройства.</p></div>
+        <div class="card glow-border"><h4>⚙️ Какие технологии используются?</h4><p>HTML5, CSS3, JavaScript, React, Firebase, SEO-инструменты.</p></div>
+    </div>
+</section>
+
+<!-- ===== БЛОГ ===== -->
+<section class="section" id="blog">
+    <div class="section-header">
+        <h2>Блог <span class="neon-text">статьи</span></h2>
+        <p>Полезные материалы для вашего бизнеса</p>
+    </div>
+    <div class="grid-3">
+        <div class="card glow-border"><span class="icon">📖</span><h4>Web Design Trends</h4><p>Актуальные тренды 2025</p></div>
+        <div class="card glow-border"><span class="icon">📄</span><h4>Landing Page Tips</h4><p>Как создать продающий лендинг</p></div>
+        <div class="card glow-border"><span class="icon">🏗️</span><h4>Website Development Guide</h4><p>Полное руководство</p></div>
+        <div class="card glow-border"><span class="icon">🔍</span><h4>SEO Best Practices</h4><p>Советы по SEO</p></div>
+        <div class="card glow-border"><span class="icon">📊</span><h4>Technical SEO Guide</h4><p>Техническая оптимизация</p></div>
+        <div class="card glow-border"><span class="icon">📱</span><h4>Responsive Web Design</h4><p>Адаптивная вёрстка</p></div>
+        <div class="card glow-border"><span class="icon">🎨</span><h4>UI/UX Principles</h4><p>Принципы UX дизайна</p></div>
+        <div class="card glow-border"><span class="icon">⚡</span><h4>Website Performance</h4><p>Оптимизация скорости</p></div>
+        <div class="card glow-border"><span class="icon">📈</span><h4>Core Web Vitals</h4><p>Google метрики</p></div>
+    </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section" id="contact">
+    <h2>Готовы к <span class="neon-text">сотрудничеству</span>?</h2>
+    <p>Свяжитесь с нами — и мы создадим сайт вашей мечты</p>
+    <a href="https://t.me/Google_Maps_SEO" target="_blank" class="btn-primary" style="padding:18px 50px;font-size:18px;">✈️ Написать в Telegram</a>
+</section>
+
+<!-- ===== FOOTER ===== -->
 <footer class="footer">
     <p>© 2025 Premium Web Studio · Все права защищены</p>
+    <p style="margin-top:8px;color:rgba(255,255,255,0.05);font-size:12px;">web design · development · seo · ui/ux · business</p>
 </footer>
-<script src="script.js"></script>
+
+<!-- ===== SCROLL ANIMATION ===== -->
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+    console.log('🚀 Premium Web Studio загружен!');
+</script>
+
 </body>
 </html>
