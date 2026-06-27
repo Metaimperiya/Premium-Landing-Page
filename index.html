@@ -1,472 +1,516 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
-    <title>METAIMPERIYA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- PWA Meta -->
-    <link rel="manifest" href="manifest.json" />
-    <meta name="theme-color" content="#0d0d1a" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- ===== SEO ===== -->
+    <title>METAIMPERIYA — Социальная сеть будущего | Документация</title>
+    <meta name="description" content="METAIMPERIYA: социальная сеть с Firebase, реальным временем, друзьями, группами, AI и роботами. Полная документация и архитектура.">
+    <meta name="keywords" content="социальная сеть, Firebase, реальное время, чат, друзья, группы, уведомления, админ-панель, AI, роботы, документация">
     
-    <!-- SEO -->
-    <meta name="description" content="METAIMPERIYA — современная социальная сеть с AI и реальным чатом" />
-    <meta name="keywords" content="социальная сеть, AI, роботы, чат, firebase" />
+    <!-- ===== OPEN GRAPH ===== -->
+    <meta property="og:title" content="METAIMPERIYA — Социальная сеть будущего">
+    <meta property="og:description" content="Полная документация и архитектура социальной сети нового поколения.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://metaimperiya.github.io/metaimperiya-docs/">
+    <meta property="og:image" content="https://metaimperiya.github.io/metaimperiya-docs/assets/images/metaimperiya-preview.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://metaimperiya.github.io/metaimperiya-docs/assets/images/metaimperiya-preview.png">
+    
+    <link rel="canonical" href="https://metaimperiya.github.io/metaimperiya-docs/">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: #0d0d1a;
-            color: #e0e0e0;
-            min-height: 100vh;
-            padding: 16px;
-        }
-        .container {
-            max-width: 800px;
+            background: #0a0a1a;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #e4e6eb;
+            padding: 20px;
+            max-width: 1100px;
             margin: 0 auto;
+            min-height: 100vh;
         }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 0;
-            border-bottom: 1px solid #2a2a3e;
-            flex-wrap: wrap;
-            gap: 12px;
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            padding: 40px 0 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            margin-bottom: 24px;
         }
-        .logo {
-            font-size: 28px;
+        .header .logo { font-size: 48px; }
+        .header h1 {
+            font-size: 36px;
             font-weight: 800;
-            background: linear-gradient(135deg, #00d4ff, #7b2ffc);
+            background: linear-gradient(135deg, #1877f2, #4a9eff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-top: 4px;
         }
-        .logo span {
-            font-weight: 300;
-            -webkit-text-fill-color: #888;
+        .header .subtitle {
+            color: rgba(255,255,255,0.4);
+            font-size: 15px;
+            margin-top: 4px;
         }
-        .auth-buttons {
+
+        /* ===== LANGUAGE SWITCHER ===== */
+        .lang-switch {
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-bottom: 12px;
         }
-        .btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 14px;
-            background: #2a2a3e;
-            color: #e0e0e0;
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, #00d4ff, #7b2ffc);
-            color: #fff;
-        }
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 1px solid #2a2a3e;
-        }
-        .btn-outline:hover {
-            background: #2a2a3e;
-        }
-        .card {
-            background: #14142a;
+        .lang-btn {
+            padding: 4px 16px;
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 20px;
-            padding: 20px;
-            margin: 16px 0;
-            border: 1px solid #2a2a3e;
-            transition: all 0.3s;
+            background: transparent;
+            color: rgba(255,255,255,0.4);
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 500;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+        .lang-btn:hover {
+            border-color: rgba(255,255,255,0.2);
+            color: white;
+        }
+        .lang-btn.active {
+            background: #1877f2;
+            border-color: #1877f2;
+            color: white;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            margin-bottom: 20px;
+        }
+        .nav-link {
+            padding: 6px 14px;
+            border-radius: 6px;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+        .nav-link:hover {
+            background: rgba(255,255,255,0.05);
+            color: white;
+        }
+        .nav-link.active {
+            background: #1877f2;
+            color: white;
+        }
+
+        /* ===== GRID ===== */
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+
+        /* ===== CARD ===== */
+        .card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 18px 20px;
+            border: 1px solid rgba(255,255,255,0.04);
+            transition: 0.25s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
         }
         .card:hover {
-            border-color: #00d4ff55;
+            background: rgba(255,255,255,0.06);
+            transform: translateY(-3px);
+            border-color: rgba(24, 119, 242, 0.3);
         }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin: 20px 0;
-        }
-        .feature {
-            background: #1a1a32;
-            padding: 20px;
-            border-radius: 16px;
-            text-align: center;
-            border: 1px solid #2a2a3e;
-            transition: all 0.3s;
-        }
-        .feature:hover {
-            transform: translateY(-4px);
-            border-color: #7b2ffc;
-        }
-        .feature .icon {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-        .feature h3 {
-            font-size: 16px;
-            margin-bottom: 6px;
-            color: #fff;
-        }
-        .feature p {
-            font-size: 13px;
-            color: #888;
-        }
-        #chatBox {
-            height: 300px;
-            overflow-y: auto;
-            background: #0a0a18;
-            border-radius: 12px;
-            padding: 16px;
-            margin: 12px 0;
-            border: 1px solid #2a2a3e;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .msg {
-            background: #1e1e3a;
-            padding: 10px 14px;
-            border-radius: 12px;
-            max-width: 80%;
-            word-break: break-word;
-            border-left: 3px solid #7b2ffc;
-        }
-        .msg.own {
-            align-self: flex-end;
-            border-left-color: #00d4ff;
-            background: #1a2a3a;
-        }
-        .msg .user {
-            font-size: 12px;
-            color: #7b2ffc;
-            font-weight: 600;
-        }
-        .msg .time {
-            font-size: 10px;
-            color: #666;
-            margin-left: 10px;
-        }
-        .chat-input {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        .chat-input input {
-            flex: 1;
-            padding: 12px 18px;
-            border-radius: 30px;
-            border: 1px solid #2a2a3e;
-            background: #0a0a18;
-            color: #e0e0e0;
+        .card .icon { font-size: 28px; }
+        .card h4 {
             font-size: 15px;
-            outline: none;
+            font-weight: 600;
+            color: white;
+            margin: 6px 0 2px;
         }
-        .chat-input input:focus {
-            border-color: #7b2ffc;
-        }
-        .chat-input button {
-            padding: 12px 24px;
-        }
-        .profile-pic {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #00d4ff, #7b2ffc);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: 700;
-            color: #fff;
-        }
-        .flex {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .hidden {
-            display: none !important;
-        }
-        .tag {
-            display: inline-block;
-            background: #2a2a3e;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            color: #aaa;
-        }
-        .footer {
-            margin-top: 40px;
-            text-align: center;
-            color: #555;
+        .card p {
             font-size: 13px;
-            border-top: 1px solid #2a2a3e;
-            padding-top: 20px;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.5;
         }
-        @media (max-width: 600px) {
-            header {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .auth-buttons {
-                justify-content: center;
-            }
-            .grid {
-                grid-template-columns: 1fr 1fr;
-            }
+        .card .tag {
+            display: inline-block;
+            font-size: 10px;
+            color: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.04);
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-top: 6px;
+            font-family: monospace;
+        }
+
+        /* ===== SECTION ===== */
+        .section {
+            background: rgba(255,255,255,0.02);
+            border-radius: 16px;
+            padding: 24px 28px;
+            margin: 20px 0;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+        .section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: white;
+        }
+        .section h2 .icon { margin-right: 10px; }
+        .section p {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        /* ===== BADGES ===== */
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .badge {
+            background: rgba(255,255,255,0.05);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+            border: 1px solid rgba(255,255,255,0.04);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            color: rgba(255,255,255,0.15);
+            font-size: 13px;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            margin-top: 30px;
+        }
+
+        /* ===== LANG TOGGLE ===== */
+        .lang-ru, .lang-en { display: none; }
+        .lang-ru.active, .lang-en.active { display: block; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .grid-3 { grid-template-columns: 1fr 1fr; }
+            .grid-4 { grid-template-columns: 1fr 1fr; }
+            .header h1 { font-size: 28px; }
+            .section { padding: 18px 16px; }
+            .nav-bar { justify-content: center; }
+            .lang-switch { justify-content: center; }
+        }
+        @media (max-width: 480px) {
+            .grid-3 { grid-template-columns: 1fr; }
+            .grid-4 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container" id="app">
+<!-- ===== LANGUAGE SWITCHER ===== -->
+<div class="lang-switch">
+    <button class="lang-btn active" onclick="switchLang('ru')">🇷🇺 Русский</button>
+    <button class="lang-btn" onclick="switchLang('en')">🇬🇧 English</button>
+</div>
 
-        <!-- HEADER -->
-        <header>
-            <div class="logo">METAIMPERIYA <span>| α</span></div>
-            <div class="auth-buttons" id="authButtons">
-                <button class="btn btn-outline" id="loginBtn">Войти</button>
-                <button class="btn btn-primary" id="registerBtn">Регистрация</button>
-            </div>
-            <div class="flex hidden" id="userInfo">
-                <div class="profile-pic" id="userAvatar">👤</div>
-                <div>
-                    <div id="userName" style="font-weight:600;">User</div>
-                    <div style="font-size:12px; color:#888;" id="userEmail">email</div>
-                </div>
-                <button class="btn btn-outline" id="logoutBtn" style="margin-left:10px; padding:6px 16px; font-size:12px;">Выйти</button>
-            </div>
-        </header>
+<!-- ===== HEADER ===== -->
+<header class="header">
+    <div class="logo">🚀</div>
+    <h1>METAIMPERIYA</h1>
+    <div class="subtitle" id="subtitle">Социальная сеть нового поколения</div>
+    <div class="badge-container" style="justify-content:center;">
+        <span class="badge">🔥 Firebase</span>
+        <span class="badge">💬 Реальное время</span>
+        <span class="badge">🤖 AI & Роботы</span>
+        <span class="badge">📱 PWA</span>
+        <span class="badge">🌐 GitHub Pages</span>
+    </div>
+</header>
 
-        <!-- HERO -->
-        <div class="card" style="text-align:center; background: linear-gradient(135deg, #0d0d1a, #1a0a2e);">
-            <h1 style="font-size:32px; margin-bottom:10px;">🚀 Добро пожаловать в METAIMPERIYA</h1>
-            <p style="color:#aaa; max-width:500px; margin:0 auto 16px;">Социальная сеть с AI, реальным чатом и единой экосистемой</p>
-            <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center;">
-                <span class="tag">🔥 Firebase</span>
-                <span class="tag">💬 Чат</span>
-                <span class="tag">🤖 AI</span>
-                <span class="tag">📱 PWA</span>
-            </div>
-        </div>
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav-bar">
+    <a href="/" class="nav-link active">🏠 Главная</a>
+    <a href="/architecture" class="nav-link">🏗️ Архитектура</a>
+    <a href="/profiles" class="nav-link">👤 Профили</a>
+    <a href="/friends" class="nav-link">🤝 Друзья</a>
+    <a href="/chats" class="nav-link">💬 Чаты</a>
+    <a href="/groups" class="nav-link">👥 Группы</a>
+    <a href="/notifications" class="nav-link">🔔 Уведомления</a>
+    <a href="/admin" class="nav-link">👑 Админ</a>
+    <a href="/firebase" class="nav-link">🔥 Firebase</a>
+    <a href="/frontend" class="nav-link">⚡ Frontend</a>
+    <a href="/deployment" class="nav-link">🚀 Деплой</a>
+    <a href="/ai-robots" class="nav-link">🤖 AI & Роботы</a>
+    <a href="/three-worlds" class="nav-link">🌍 Три мира</a>
+    <a href="/docs" class="nav-link">📚 Docs</a>
+</nav>
 
-        <!-- FEATURES -->
-        <div class="grid">
-            <div class="feature">
-                <div class="icon">👥</div>
-                <h3>Социальная сеть</h3>
-                <p>Профили, друзья, группы</p>
-            </div>
-            <div class="feature">
-                <div class="icon">📄</div>
-                <h3>Документация</h3>
-                <p>Гайды, API, справочники</p>
-            </div>
-            <div class="feature">
-                <div class="icon">🤖</div>
-                <h3>AI & Роботы</h3>
-                <p>Интеллектуальные агенты</p>
-            </div>
-            <div class="feature">
-                <div class="icon">🌍</div>
-                <h3>Три мира</h3>
-                <p>Реальный, виртуальный, третий</p>
-            </div>
-        </div>
+<!-- ========================================================== -->
+<!-- ===== RUSSIAN VERSION ===== -->
+<div class="lang-ru active">
 
-        <!-- CHAT -->
-        <div class="card">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-                <h3>💬 Реальный чат</h3>
-                <span style="font-size:12px; color:#666;" id="onlineCount">● 0 онлайн</span>
-            </div>
-            <div id="chatBox"></div>
-            <div class="chat-input">
-                <input type="text" id="chatInput" placeholder="Напиши сообщение..." />
-                <button class="btn btn-primary" id="sendBtn">➤</button>
-            </div>
-        </div>
+    <!-- ===== ВВЕДЕНИЕ ===== -->
+    <section class="section">
+        <h2><span class="icon">🧠</span> Что такое METAIMPERIYA?</h2>
+        <p><strong>METAIMPERIYA</strong> — это современная социальная сеть, построенная как модульная экосистема. Один аккаунт работает на всех сайтах. Пользователи, комментарии, лайки и подписки синхронизируются через единый Firebase-проект.</p>
+    </section>
 
-        <!-- FOOTER -->
-        <div class="footer">
-            METAIMPERIYA v2.0 • Единая экосистема • <span id="year"></span>
-        </div>
-
+    <!-- ===== КАРТОЧКИ РАЗДЕЛОВ ===== -->
+    <div class="grid-3">
+        <a href="/architecture" class="card">
+            <div class="icon">🏗️</div>
+            <h4>Архитектура</h4>
+            <p>Как устроена система</p>
+            <span class="tag">основа</span>
+        </a>
+        <a href="/profiles" class="card">
+            <div class="icon">👤</div>
+            <h4>Профили</h4>
+            <p>Пользователи, аватарки, настройки</p>
+            <span class="tag">ядро</span>
+        </a>
+        <a href="/friends" class="card">
+            <div class="icon">🤝</div>
+            <h4>Друзья</h4>
+            <p>Запросы, подписки, лента</p>
+            <span class="tag">социальное</span>
+        </a>
+        <a href="/chats" class="card">
+            <div class="icon">💬</div>
+            <h4>Чаты</h4>
+            <p>Реальное время, уведомления</p>
+            <span class="tag">общение</span>
+        </a>
+        <a href="/groups" class="card">
+            <div class="icon">👥</div>
+            <h4>Группы</h4>
+            <p>Сообщества, обсуждения</p>
+            <span class="tag">коллективное</span>
+        </a>
+        <a href="/notifications" class="card">
+            <div class="icon">🔔</div>
+            <h4>Уведомления</h4>
+            <p>Оповещения, события</p>
+            <span class="tag">сигналы</span>
+        </a>
+        <a href="/admin" class="card">
+            <div class="icon">👑</div>
+            <h4>Админ-панель</h4>
+            <p>Управление, модерация</p>
+            <span class="tag">контроль</span>
+        </a>
+        <a href="/firebase" class="card">
+            <div class="icon">🔥</div>
+            <h4>Firebase</h4>
+            <p>База данных, авторизация</p>
+            <span class="tag">бэкенд</span>
+        </a>
+        <a href="/frontend" class="card">
+            <div class="icon">⚡</div>
+            <h4>Frontend</h4>
+            <p>HTML, CSS, JavaScript</p>
+            <span class="tag">интерфейс</span>
+        </a>
+        <a href="/deployment" class="card">
+            <div class="icon">🚀</div>
+            <h4>Деплой</h4>
+            <p>GitHub Pages, хостинг</p>
+            <span class="tag">запуск</span>
+        </a>
+        <a href="/ai-robots" class="card">
+            <div class="icon">🤖</div>
+            <h4>AI и Роботы</h4>
+            <p>Интеллект, автоматизация</p>
+            <span class="tag">будущее</span>
+        </a>
+        <a href="/three-worlds" class="card">
+            <div class="icon">🌍</div>
+            <h4>Три мира</h4>
+            <p>Реальный, виртуальный, третий</p>
+            <span class="tag">философия</span>
+        </a>
     </div>
 
-    <!-- ===== FIREBASE ===== -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+    <!-- ===== СТАТИСТИКА ===== -->
+    <section class="section">
+        <h2><span class="icon">📊</span> Ключевые слова SEO</h2>
+        <div class="badge-container">
+            <span class="badge">социальная сеть</span>
+            <span class="badge">Firebase</span>
+            <span class="badge">реальное время</span>
+            <span class="badge">чат</span>
+            <span class="badge">друзья</span>
+            <span class="badge">группы</span>
+            <span class="badge">уведомления</span>
+            <span class="badge">админ-панель</span>
+            <span class="badge">GitHub Pages</span>
+            <span class="badge">адаптивный дизайн</span>
+            <span class="badge">SEO</span>
+            <span class="badge">AI</span>
+            <span class="badge">робототехника</span>
+            <span class="badge">PWA</span>
+            <span class="badge">документация</span>
+            <span class="badge">архитектура</span>
+        </div>
+    </section>
 
-    <script>
-        // ===== КОНФИГ =====
-        const firebaseConfig = {
-            apiKey: "AIzaSyDCx2wLK2E2OjOrUNoXEdwD1YY0e8cOHhtY",
-            authDomain: "myecosystem-e6414.firebaseapp.com",
-            databaseURL: "https://myecosystem-e6414-default-rtdb.firebaseio.com",
-            projectId: "myecosystem-e6414",
-            storageBucket: "myecosystem-e6414.firebasestorage.app",
-            messagingSenderId: "426302111033",
-            appId: "1:426302111033:web:7b39e702e694f528a13ce8"
-        };
+</div>
 
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.database();
+<!-- ========================================================== -->
+<!-- ===== ENGLISH VERSION ===== -->
+<div class="lang-en">
 
-        // ===== DOM =====
-        const chatBox = document.getElementById('chatBox');
-        const chatInput = document.getElementById('chatInput');
-        const sendBtn = document.getElementById('sendBtn');
-        const loginBtn = document.getElementById('loginBtn');
-        const registerBtn = document.getElementById('registerBtn');
-        const logoutBtn = document.getElementById('logoutBtn');
-        const authButtons = document.getElementById('authButtons');
-        const userInfo = document.getElementById('userInfo');
-        const userName = document.getElementById('userName');
-        const userEmail = document.getElementById('userEmail');
-        const userAvatar = document.getElementById('userAvatar');
-        const onlineCount = document.getElementById('onlineCount');
-        const year = document.getElementById('year');
-        year.textContent = new Date().getFullYear();
+    <!-- ===== INTRODUCTION ===== -->
+    <section class="section">
+        <h2><span class="icon">🧠</span> What is METAIMPERIYA?</h2>
+        <p><strong>METAIMPERIYA</strong> is a modern social networking platform built as a modular ecosystem. One account works across all websites. Users, comments, likes, and subscriptions are synchronized via a shared Firebase project.</p>
+    </section>
 
-        let currentUser = null;
+    <!-- ===== CARDS ===== -->
+    <div class="grid-3">
+        <a href="/architecture" class="card">
+            <div class="icon">🏗️</div>
+            <h4>Architecture</h4>
+            <p>System structure</p>
+            <span class="tag">core</span>
+        </a>
+        <a href="/profiles" class="card">
+            <div class="icon">👤</div>
+            <h4>Profiles</h4>
+            <p>Users, avatars, settings</p>
+            <span class="tag">core</span>
+        </a>
+        <a href="/friends" class="card">
+            <div class="icon">🤝</div>
+            <h4>Friends</h4>
+            <p>Requests, subscriptions, feed</p>
+            <span class="tag">social</span>
+        </a>
+        <a href="/chats" class="card">
+            <div class="icon">💬</div>
+            <h4>Chats</h4>
+            <p>Real-time, notifications</p>
+            <span class="tag">communication</span>
+        </a>
+        <a href="/groups" class="card">
+            <div class="icon">👥</div>
+            <h4>Groups</h4>
+            <p>Communities, discussions</p>
+            <span class="tag">collective</span>
+        </a>
+        <a href="/notifications" class="card">
+            <div class="icon">🔔</div>
+            <h4>Notifications</h4>
+            <p>Alerts, events</p>
+            <span class="tag">signals</span>
+        </a>
+        <a href="/admin" class="card">
+            <div class="icon">👑</div>
+            <h4>Admin Panel</h4>
+            <p>Management, moderation</p>
+            <span class="tag">control</span>
+        </a>
+        <a href="/firebase" class="card">
+            <div class="icon">🔥</div>
+            <h4>Firebase</h4>
+            <p>Database, authentication</p>
+            <span class="tag">backend</span>
+        </a>
+        <a href="/frontend" class="card">
+            <div class="icon">⚡</div>
+            <h4>Frontend</h4>
+            <p>HTML, CSS, JavaScript</p>
+            <span class="tag">interface</span>
+        </a>
+        <a href="/deployment" class="card">
+            <div class="icon">🚀</div>
+            <h4>Deployment</h4>
+            <p>GitHub Pages, hosting</p>
+            <span class="tag">launch</span>
+        </a>
+        <a href="/ai-robots" class="card">
+            <div class="icon">🤖</div>
+            <h4>AI & Robots</h4>
+            <p>Intelligence, automation</p>
+            <span class="tag">future</span>
+        </a>
+        <a href="/three-worlds" class="card">
+            <div class="icon">🌍</div>
+            <h4>Three Worlds</h4>
+            <p>Real, Virtual, Third</p>
+            <span class="tag">philosophy</span>
+        </a>
+    </div>
 
-        // ===== АВТОРИЗАЦИЯ =====
-        function updateUI(user) {
-            if (user) {
-                authButtons.classList.add('hidden');
-                userInfo.classList.remove('hidden');
-                userName.textContent = user.displayName || user.email.split('@')[0] || 'User';
-                userEmail.textContent = user.email;
-                userAvatar.textContent = (user.displayName || user.email || 'U')[0].toUpperCase();
-                currentUser = user;
-                // Сохраняем онлайн-статус
-                if (user.uid) {
-                    db.ref('users/' + user.uid).update({
-                        displayName: user.displayName || user.email.split('@')[0],
-                        email: user.email,
-                        online: true,
-                        lastSeen: firebase.database.ServerValue.TIMESTAMP
-                    });
-                    db.ref('users/' + user.uid + '/online').onDisconnect().set(false);
-                }
-            } else {
-                authButtons.classList.remove('hidden');
-                userInfo.classList.add('hidden');
-                currentUser = null;
-            }
-        }
+    <!-- ===== SEO KEYWORDS ===== -->
+    <section class="section">
+        <h2><span class="icon">📊</span> SEO Keywords</h2>
+        <div class="badge-container">
+            <span class="badge">social network</span>
+            <span class="badge">Firebase</span>
+            <span class="badge">real-time</span>
+            <span class="badge">chat</span>
+            <span class="badge">friends</span>
+            <span class="badge">groups</span>
+            <span class="badge">notifications</span>
+            <span class="badge">admin dashboard</span>
+            <span class="badge">GitHub Pages</span>
+            <span class="badge">responsive design</span>
+            <span class="badge">SEO</span>
+            <span class="badge">AI</span>
+            <span class="badge">robotics</span>
+            <span class="badge">PWA</span>
+            <span class="badge">documentation</span>
+            <span class="badge">architecture</span>
+        </div>
+    </section>
 
-        auth.onAuthStateChanged(user => {
-            updateUI(user);
-            if (user) loadChat();
-        });
+</div>
 
-        // Регистрация
-        registerBtn.addEventListener('click', () => {
-            const email = prompt('Введите email:');
-            if (!email) return;
-            const pass = prompt('Введите пароль (мин. 6 символов):');
-            if (!pass || pass.length < 6) return alert('Пароль минимум 6 символов');
-            auth.createUserWithEmailAndPassword(email, pass)
-                .then(cred => {
-                    const name = prompt('Ваше имя:') || email.split('@')[0];
-                    return cred.user.updateProfile({ displayName: name });
-                })
-                .then(() => alert('✅ Регистрация успешна!'))
-                .catch(err => alert('❌ Ошибка: ' + err.message));
-        });
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <p id="footerText">© 2024 METAIMPERIYA — Социальная сеть нового поколения</p>
+    <p style="margin-top:4px;">Сделано с ❤️ и видением будущего</p>
+</footer>
 
-        // Вход
-        loginBtn.addEventListener('click', () => {
-            const email = prompt('Email:');
-            if (!email) return;
-            const pass = prompt('Пароль:');
-            if (!pass) return;
-            auth.signInWithEmailAndPassword(email, pass)
-                .then(() => alert('✅ Добро пожаловать!'))
-                .catch(err => alert('❌ Ошибка: ' + err.message));
-        });
+<!-- ========================================================== -->
+<!-- ===== LANGUAGE SWITCHER JS ===== -->
+<script>
+function switchLang(lang) {
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.lang-ru, .lang-en').forEach(el => el.classList.remove('active'));
+    
+    if (lang === 'ru') {
+        document.querySelector('.lang-btn:first-child').classList.add('active');
+        document.querySelector('.lang-ru').classList.add('active');
+        document.getElementById('subtitle').textContent = 'Социальная сеть нового поколения';
+        document.getElementById('footerText').textContent = '© 2024 METAIMPERIYA — Социальная сеть нового поколения';
+        document.documentElement.lang = 'ru';
+    } else {
+        document.querySelector('.lang-btn:last-child').classList.add('active');
+        document.querySelector('.lang-en').classList.add('active');
+        document.getElementById('subtitle').textContent = 'Next Generation Social Network';
+        document.getElementById('footerText').textContent = '© 2024 METAIMPERIYA — Next Generation Social Network';
+        document.documentElement.lang = 'en';
+    }
+}
+</script>
 
-        // Выход
-        logoutBtn.addEventListener('click', () => {
-            if (currentUser) {
-                db.ref('users/' + currentUser.uid + '/online').set(false);
-            }
-            auth.signOut();
-        });
-
-        // ===== ЧАТ =====
-        let messagesRef = db.ref('messages');
-
-        function loadChat() {
-            messagesRef.off();
-            messagesRef.limitToLast(50).on('child_added', snap => {
-                const data = snap.val();
-                if (!data) return;
-                const msgDiv = document.createElement('div');
-                msgDiv.className = 'msg' + (data.uid === currentUser?.uid ? ' own' : '');
-                const user = data.displayName || 'Аноним';
-                const time = data.timestamp ? new Date(data.timestamp).toLocaleTimeString() : '';
-                msgDiv.innerHTML = `
-                    <div class="user">${user} <span class="time">${time}</span></div>
-                    <div>${data.text}</div>
-                `;
-                chatBox.appendChild(msgDiv);
-                chatBox.scrollTop = chatBox.scrollHeight;
-            });
-        }
-
-        function sendMessage() {
-            const text = chatInput.value.trim();
-            if (!text || !currentUser) return alert('Войдите, чтобы писать');
-            const ref = messagesRef.push();
-            ref.set({
-                uid: currentUser.uid,
-                displayName: currentUser.displayName || currentUser.email.split('@')[0],
-                text: text,
-                timestamp: firebase.database.ServerValue.TIMESTAMP
-            });
-            chatInput.value = '';
-        }
-
-        sendBtn.addEventListener('click', sendMessage);
-        chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
-
-        // ===== ОНЛАЙН =====
-        db.ref('users').on('value', snap => {
-            const users = snap.val();
-            if (!users) return;
-            let online = 0;
-            for (let uid in users) {
-                if (users[uid].online === true) online++;
-            }
-            onlineCount.textContent = '● ' + online + ' онлайн';
-        });
-
-        // ===== PWA =====
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
-                .then(() => console.log('✅ SW зарегистрирован'))
-                .catch(err => console.log('❌ SW ошибка:', err));
-        }
-
-        console.log('🚀 METAIMPERIYA загружена!');
-    </script>
 </body>
 </html>
