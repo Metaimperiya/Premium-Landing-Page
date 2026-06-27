@@ -1,0 +1,612 @@
+/* ========================================
+   CSS — Premium Landing Page
+   Версия 1.0 (Базовый каркас)
+   ======================================== */
+
+/* ---------- 1. БАЗОВЫЙ СБРОС (RESET) ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #0b0b1a;
+    color: #f0f0f5;
+    line-height: 1.6;
+    padding-top: 80px; /* Чтобы контент не прятался за шапкой */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ---------- 2. ПЕРЕМЕННЫЕ (ЦВЕТА) ---------- */
+:root {
+    --primary: #6C63FF;
+    --primary-dark: #5a52d5;
+    --secondary: #FF6B6B;
+    --bg-dark: #0b0b1a;
+    --bg-card: #14142b;
+    --text-light: #f0f0f5;
+    --text-gray: #a0a0b8;
+    --border-color: #2a2a4a;
+}
+
+/* ---------- 3. КНОПКИ ---------- */
+.btn {
+    display: inline-block;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 8px 25px rgba(108, 99, 255, 0.3);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(108, 99, 255, 0.4);
+}
+
+.btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 2px solid var(--primary);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.btn-large {
+    padding: 18px 48px;
+    font-size: 18px;
+}
+
+/* ---------- 4. ШАПКА ---------- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(11, 11, 26, 0.92);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Логотип */
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-icon {
+    color: var(--primary);
+    font-size: 28px;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+/* Навигация */
+.nav-list {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.3s ease;
+    padding: 6px 0;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover {
+    color: #fff;
+}
+
+.btn-contact {
+    background: var(--primary);
+    color: #fff !important;
+    padding: 10px 24px;
+    border-radius: 8px;
+    border-bottom: none !important;
+}
+
+.btn-contact:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+/* ---------- 5. ВЫПАДАЮЩЕЕ МЕНЮ ---------- */
+.has-dropdown {
+    position: relative;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #1a1a35;
+    min-width: 220px;
+    padding: 12px 0;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    z-index: 100;
+}
+
+.has-dropdown:hover .dropdown {
+    display: block;
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px 24px;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.2s;
+}
+
+.dropdown a:hover {
+    background: rgba(108, 99, 255, 0.15);
+    color: var(--primary);
+}
+
+/* ---------- 6. БУРГЕР (МОБИЛЬНАЯ ВЕРСИЯ) ---------- */
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.burger span {
+    width: 28px;
+    height: 3px;
+    background: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* ---------- 7. HERO (ПЕРВЫЙ ЭКРАН) ---------- */
+.hero {
+    padding: 80px 0 60px;
+    text-align: center;
+    background: radial-gradient(circle at 30% 30%, #1a1a4a, #0b0b1a 80%);
+}
+
+.hero-title {
+    font-size: 56px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #fff 30%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 20px;
+    color: var(--text-gray);
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+/* Статистика */
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 42px;
+    font-weight: 800;
+    color: #fff;
+}
+
+.stat-plus,
+.stat-percent {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.stat-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.stat-item p {
+    color: var(--text-gray);
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+/* ---------- 8. СЕКЦИИ (ОБЩИЕ) ---------- */
+section {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 40px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+/* ---------- 9. УСЛУГИ ---------- */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+}
+
+.service-card {
+    background: var(--bg-card);
+    padding: 30px 20px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: 0 12px 40px rgba(108, 99, 255, 0.15);
+}
+
+.service-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+.service-card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.service-card p {
+    font-size: 14px;
+    color: var(--text-gray);
+}
+
+/* ---------- 10. ПОЧЕМУ МЫ ---------- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.feature-item {
+    background: var(--bg-card);
+    padding: 16px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+}
+
+/* ---------- 11. ПОРТФОЛИО ---------- */
+.portfolio-filters {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-gray);
+    padding: 10px 24px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.portfolio-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: var(--bg-card);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+
+.portfolio-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    color: #fff;
+}
+
+/* ---------- 12. ТАРИФЫ ---------- */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    align-items: start;
+}
+
+.pricing-card {
+    background: var(--bg-card);
+    padding: 40px 30px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.pricing-card:hover {
+    transform: translateY(-6px);
+}
+
+.pricing-card.popular {
+    border-color: var(--primary);
+    box-shadow: 0 0 40px rgba(108, 99, 255, 0.15);
+}
+
+.badge {
+    background: var(--primary);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.pricing-card h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.price {
+    font-size: 42px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.pricing-card ul {
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.pricing-card ul li {
+    padding: 8px 0;
+    color: var(--text-gray);
+    font-size: 15px;
+}
+
+/* ---------- 13. CTA ---------- */
+.cta {
+    text-align: center;
+    background: radial-gradient(circle at 70% 30%, #1a1a4a, #0b0b1a 80%);
+    padding: 80px 0;
+}
+
+.cta h2 {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.cta p {
+    color: var(--text-gray);
+    font-size: 18px;
+    margin-bottom: 32px;
+}
+
+/* ---------- 14. ПОДВАЛ ---------- */
+.footer {
+    background: #060612;
+    padding: 60px 0 30px;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.footer-col ul li {
+    margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+    color: var(--text-gray);
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: var(--primary);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    text-align: center;
+    color: var(--text-gray);
+    font-size: 14px;
+}
+
+/* ---------- 15. АДАПТИВ (МОБИЛКИ) ---------- */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 40px;
+    }
+    .stats {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 70px;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #0b0b1a;
+        padding: 20px;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .nav.active {
+        display: block;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+    }
+
+    .hero-title {
+        font-size: 30px;
+    }
+    .hero-subtitle {
+        font-size: 16px;
+    }
+    .stat-number {
+        font-size: 30px;
+    }
+    .section-title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 24px;
+    }
+    .stats {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
