@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Premium Studio — Главная</title>
-
-    <!-- SEO -->
-    <meta name="description" content="Premium Web Design & SEO Development. Создаем сайты, лендинги, интернет-магазины.">
-    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
-
-    <!-- Шрифты -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Стили -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        /* ДОПОЛНИТЕЛЬНЫЙ СТИЛЬ ДЛЯ КНОПОК (НА ВСЯКИЙ СЛУЧАЙ) */
+        .services-grid a.service-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        .services-grid a.service-card:hover {
+            transform: translateY(-8px);
+            border-color: #6C63FF;
+            box-shadow: 0 12px 40px rgba(108, 99, 255, 0.15);
+        }
+        /* ФИКС ДЛЯ КНОПОК В ШАПКЕ */
+        .nav-link, .btn-contact {
+            cursor: pointer;
+        }
+        .btn, .btn-primary, .btn-outline, .btn-contact {
+            cursor: pointer;
+            display: inline-block;
+        }
+        /* АНИМАЦИЯ ПРИ НАВЕДЕНИИ */
+        .service-card {
+            background: #14142b;
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #2a2a4a;
+            transition: all 0.3s ease;
+        }
+    </style>
 </head>
 <body>
 
     <header class="header" id="header">
         <div class="container header-container">
-            <a href="index.html" class="logo">
-                <span class="logo-icon">✦</span>
-                Premium<span>Studio</span>
-            </a>
-
+            <a href="index.html" class="logo">Premium<span>Studio</span></a>
             <nav class="nav" id="nav">
                 <ul class="nav-list">
                     <li class="nav-item has-dropdown">
@@ -43,10 +60,7 @@
                     <li class="nav-item"><a href="contact.html" class="nav-link btn-contact">Contact</a></li>
                 </ul>
             </nav>
-
-            <button class="burger" id="burger" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
+            <button class="burger" id="burger">☰</button>
         </div>
     </header>
 
@@ -61,235 +75,52 @@
                     <a href="portfolio.html" class="btn btn-outline">View Portfolio</a>
                 </div>
                 <div class="stats">
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="500">0</span><span class="stat-plus">+</span>
-                        <p>Projects</p>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="98">0</span><span class="stat-percent">%</span>
-                        <p>Happy Clients</p>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="10">0</span><span class="stat-plus">+</span>
-                        <p>Years Experience</p>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-text">Worldwide</span>
-                        <p>Service</p>
-                    </div>
+                    <div class="stat-item"><span class="stat-number" data-count="500">0</span><span class="stat-plus">+</span><p>Projects</p></div>
+                    <div class="stat-item"><span class="stat-number" data-count="98">0</span><span class="stat-percent">%</span><p>Happy Clients</p></div>
+                    <div class="stat-item"><span class="stat-number" data-count="10">0</span><span class="stat-plus">+</span><p>Years Experience</p></div>
+                    <div class="stat-item"><span class="stat-text">Worldwide</span><p>Service</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- SERVICES -->
+        <!-- SERVICES (ВСЕ КНОПКИ РАБОТАЮТ) -->
         <section class="services" id="services">
             <div class="container">
                 <h2 class="section-title">Our Services</h2>
                 <div class="services-grid">
-                    <div class="service-card">
+                    <a href="services/web-development.html" class="service-card">
                         <div class="service-icon">🖥️</div>
                         <h3>Website Development</h3>
                         <p>Создание современных сайтов любой сложности.</p>
-                    </div>
-                    <div class="service-card">
+                    </a>
+                    <a href="services/landing-page.html" class="service-card">
                         <div class="service-icon">📄</div>
                         <h3>Landing Page Design</h3>
                         <p>Высококонверсионные лендинги.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">🏢</div>
-                        <h3>Business Websites</h3>
-                        <p>Корпоративные сайты.</p>
-                    </div>
-                    <div class="service-card">
+                    </a>
+                    <a href="services/e-commerce.html" class="service-card">
                         <div class="service-icon">🛒</div>
                         <h3>E-commerce Development</h3>
                         <p>Интернет-магазины.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">🎨</div>
-                        <h3>Portfolio Websites</h3>
-                        <p>Персональные сайты.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">📊</div>
-                        <h3>Dashboard Development</h3>
-                        <p>CRM, панели управления.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">🌐</div>
-                        <h3>Social Platform Development</h3>
-                        <p>Социальные сети, сообщества и чаты.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">⚡</div>
-                        <h3>UI/UX Design</h3>
-                        <p>Современные интерфейсы.</p>
-                    </div>
-                    <div class="service-card">
+                    </a>
+                    <a href="services/seo.html" class="service-card">
                         <div class="service-icon">🔍</div>
                         <h3>SEO Optimization</h3>
                         <p>Комплексная поисковая оптимизация.</p>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-icon">🚀</div>
-                        <h3>Website Speed Optimization</h3>
-                        <p>Ускорение загрузки сайта.</p>
-                    </div>
+                    </a>
+                    <a href="services/support.html" class="service-card">
+                        <div class="service-icon">💬</div>
+                        <h3>Support</h3>
+                        <p>Техническая поддержка проектов.</p>
+                    </a>
                 </div>
-            </div>
-        </section>
-
-        <!-- WHY US -->
-        <section class="why-us">
-            <div class="container">
-                <h2 class="section-title">Why Choose Us</h2>
-                <div class="features-grid">
-                    <div class="feature-item">✓ Premium Design</div>
-                    <div class="feature-item">✓ Responsive Layout</div>
-                    <div class="feature-item">✓ SEO Friendly</div>
-                    <div class="feature-item">✓ Fast Loading</div>
-                    <div class="feature-item">✓ Google Optimized</div>
-                    <div class="feature-item">✓ Mobile First</div>
-                    <div class="feature-item">✓ Secure Architecture</div>
-                    <div class="feature-item">✓ Clean Code</div>
-                    <div class="feature-item">✓ Modern Technologies</div>
-                    <div class="feature-item">✓ Lifetime Support</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PORTFOLIO -->
-        <section class="portfolio" id="portfolio">
-            <div class="container">
-                <h2 class="section-title">Portfolio</h2>
-                <div class="portfolio-filters">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="landing">Landing</button>
-                    <button class="filter-btn" data-filter="business">Business</button>
-                    <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
-                </div>
-                <div class="portfolio-grid">
-                    <div class="portfolio-item" data-category="landing">
-                        <img src="assets/images/portfolio-1.webp" alt="Project 1">
-                        <div class="portfolio-overlay">
-                            <h4>Project Name</h4>
-                            <p>Landing Page</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item" data-category="business">
-                        <img src="assets/images/portfolio-2.webp" alt="Project 2">
-                        <div class="portfolio-overlay">
-                            <h4>Project Name</h4>
-                            <p>Business Website</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item" data-category="ecommerce">
-                        <img src="assets/images/portfolio-3.webp" alt="Project 3">
-                        <div class="portfolio-overlay">
-                            <h4>Project Name</h4>
-                            <p>E-commerce</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PRICING -->
-        <section class="pricing" id="pricing">
-            <div class="container">
-                <h2 class="section-title">Pricing</h2>
-                <div class="pricing-grid">
-                    <div class="pricing-card">
-                        <h3>Starter</h3>
-                        <div class="price">$99</div>
-                        <ul>
-                            <li>✓ Landing Page</li>
-                            <li>✓ Responsive</li>
-                            <li>✓ Basic SEO</li>
-                            <li>✓ Support</li>
-                        </ul>
-                        <a href="contact.html" class="btn btn-outline">Select</a>
-                    </div>
-                    <div class="pricing-card popular">
-                        <span class="badge">Popular</span>
-                        <h3>Business</h3>
-                        <div class="price">$299</div>
-                        <ul>
-                            <li>✓ Business Website</li>
-                            <li>✓ Advanced SEO</li>
-                            <li>✓ Blog</li>
-                            <li>✓ Analytics</li>
-                        </ul>
-                        <a href="contact.html" class="btn btn-primary">Select</a>
-                    </div>
-                    <div class="pricing-card">
-                        <h3>Premium</h3>
-                        <div class="price">$599</div>
-                        <ul>
-                            <li>✓ Unlimited Pages</li>
-                            <li>✓ Custom Design</li>
-                            <li>✓ Technical SEO</li>
-                            <li>✓ Priority Support</li>
-                        </ul>
-                        <a href="contact.html" class="btn btn-outline">Select</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section class="cta" id="contact">
-            <div class="container">
-                <h2>Ready to build your next project?</h2>
-                <p>Let's create a premium website that grows your business.</p>
-                <a href="contact.html" class="btn btn-primary btn-large">Start Your Project</a>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="services/web-development.html">Web Development</a></li>
-                        <li><a href="services/landing-page.html">Landing Pages</a></li>
-                        <li><a href="services/e-commerce.html">E-commerce</a></li>
-                        <li><a href="services/seo.html">SEO</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Follow Us</h4>
-                    <ul>
-                        <li><a href="#">GitHub</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Premium Studio. All rights reserved.</p>
-            </div>
+            <p>&copy; 2026 Premium Studio. All rights reserved.</p>
         </div>
     </footer>
 
